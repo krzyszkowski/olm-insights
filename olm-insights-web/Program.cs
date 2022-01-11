@@ -1,7 +1,10 @@
+using Azure.Storage.Blobs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<BlobServiceClient>(c => new BlobServiceClient(Environment.GetEnvironmentVariable("Storage:Connection")));
 
 var app = builder.Build();
 

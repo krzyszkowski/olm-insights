@@ -7,4 +7,9 @@
     <RootNamespace>olm_insights_web</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.19.0" />
+  </ItemGroup>
+
 </Project>

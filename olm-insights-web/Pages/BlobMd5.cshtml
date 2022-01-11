@@ -1,0 +1,40 @@
+﻿@page
+@model olm_insights_web.Pages.BlobMd5Model
+@{
+    ViewData["Title"] = "Md5 tests";
+}
+
+<div class="text-center">
+    <h1 class="display-4">XX</h1>
+    <p>Available blobs:</p>
+
+    
+</div>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var blob in Model.Blobs)
+            {
+                <tr>
+                    <td>@blob.Name  </td>
+                    <td>@blob.Size  </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@blob.Name">Calculate Md5 hash</a> |
+                        <button type="submit" asp-page-handler="CalculateMd5Async"
+                                asp-route-id="@blob.Name">Calulate
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-page="Create">Create New</a>
+</form>
