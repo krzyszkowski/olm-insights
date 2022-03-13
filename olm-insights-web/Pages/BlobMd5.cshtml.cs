@@ -1,6 +1,7 @@
 using Azure;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Specialized;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography;
 
@@ -34,12 +35,13 @@ namespace olm_insights_web.Pages
             }
         }
 
-        public async Task CalculateMd5Async(string blobName)
+        public async Task<IActionResult> OnPostCalculateAsync(string blobName, long blobSize)
         {
-            var blob = Blobs.First(x => x.Name == blobName);
             var sourceContainer = _blobServiceClient.GetBlobContainerClient("source");
             var blockBlob = sourceContainer.GetBlockBlobClient(blobName);
-            ResultMd5 = await CalculateBlobMd5Async(blob.Size.Value, blockBlob);
+            ResultMd5 = await CalculateBlobMd5Async(blobSize, blockBlob);
+
+            return null;
         }
 
         private async Task<Guid> CalculateBlobMd5Async(long fileSize, BlockBlobClient blockBlobClient)

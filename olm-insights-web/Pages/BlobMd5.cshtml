@@ -26,8 +26,8 @@
                     <td>@blob.Size  </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@blob.Name">Calculate Md5 hash</a> |
-                        <button type="submit" asp-page-handler="OnPostCalculateMd5Async"
-                                asp-route-id="@blob.Name">Calulate
+                        <button type="submit" asp-page-handler="Calculate"
+                                asp-route-blobName="@blob.Name" asp-route-blobSize="@blob.Size">Calulate
                         </button>
                     </td>
                 </tr>

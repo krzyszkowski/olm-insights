@@ -7,6 +7,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<BlobServiceClient>(
     c => new BlobServiceClient("DefaultEndpointsProtocol=https;AccountName=olminsightsstorage;AccountKey=AlmelybsNIBk7KhQdfraCqAqydKa229hqkVcD9JdrLUBhLf+8+swZrt7GGTgUxMtjl+oigkpy/X4jH/UG/rXLQ==;EndpointSuffix=core.windows.net"));
 
+builder.Services.AddLogging();
+builder.Services.AddApplicationInsightsTelemetry();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
