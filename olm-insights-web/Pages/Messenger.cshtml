@@ -1,0 +1,29 @@
+﻿@page
+@model olm_insights_web.Pages.MessengerModel
+@{
+}
+
+<h2>Messages tests</h2>
+<h4>Message</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Model.Message" class="control-label"></label>
+                <input asp-for="Model.Message" class="form-control" />
+                <span asp-validation-for="Model.Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">SEND!</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}   

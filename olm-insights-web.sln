@@ -5,7 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "olm-insights-web", "olm-insights-web\olm-insights-web.csproj", "{293A684A-0862-436A-BA71-281BB5A73436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "olm-insights-console", "olm-insights-console\olm-insights-console.csproj", "{285F0DF0-C6AE-482A-95A2-DA2AA2883675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "olm-insights-console", "olm-insights-console\olm-insights-console.csproj", "{285F0DF0-C6AE-482A-95A2-DA2AA2883675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "olm-inights-functions", "olm-inights-functions\olm-inights-functions.csproj", "{64CD3B0E-854E-48C2-AC0D-AA5ABD730EDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "olm-insights-api", "olm-insights-api\olm-insights-api.csproj", "{3A033EB4-90A3-40B0-8723-1480904C6257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{285F0DF0-C6AE-482A-95A2-DA2AA2883675}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{285F0DF0-C6AE-482A-95A2-DA2AA2883675}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{285F0DF0-C6AE-482A-95A2-DA2AA2883675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CD3B0E-854E-48C2-AC0D-AA5ABD730EDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CD3B0E-854E-48C2-AC0D-AA5ABD730EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CD3B0E-854E-48C2-AC0D-AA5ABD730EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CD3B0E-854E-48C2-AC0D-AA5ABD730EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A033EB4-90A3-40B0-8723-1480904C6257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A033EB4-90A3-40B0-8723-1480904C6257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A033EB4-90A3-40B0-8723-1480904C6257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A033EB4-90A3-40B0-8723-1480904C6257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

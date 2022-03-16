@@ -25,7 +25,7 @@ namespace olm_insights_console
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Timed Background Service is starting.");
+            _logger.LogInformation("Timed Background Service is starting.",new {aaa = "aaa"});
 
             _timer = new Timer(DoWork, null, TimeSpan.Zero,
                 TimeSpan.FromSeconds(5));
@@ -38,8 +38,8 @@ namespace olm_insights_console
             using (tc.StartOperation<RequestTelemetry>("workeroperation"))
             {
                 _logger.LogInformation("Timed Background Service is working.");
-                //var res = httpClient.GetAsync("https://bing.com").Result.StatusCode;
-                //_logger.LogInformation("bing http call completed with status:" + res);
+                var res = httpClient.GetAsync("https://bing.com").Result.StatusCode;
+                _logger.LogInformation("bing http call completed with status:" + res);
             }
         }
 

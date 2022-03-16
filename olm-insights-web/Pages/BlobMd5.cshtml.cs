@@ -10,10 +10,12 @@ namespace olm_insights_web.Pages
     public class BlobMd5Model : PageModel
     {
         private readonly ILogger<BlobMd5Model> _logger;
-        private int _chunkSize = 5;
+        private const int Mb = 1048576;
+        private readonly long _chunkSize;
         private readonly BlobServiceClient _blobServiceClient;
 
         public IList<BlobDescription> Blobs { get; private set; }
+        [BindProperty]
         public Guid ResultMd5 { get; set; }
 
         public BlobMd5Model(
@@ -23,6 +25,7 @@ namespace olm_insights_web.Pages
             Blobs = new List<BlobDescription>();
             _logger = logger;
             _blobServiceClient = blobServiceClient;
+            _chunkSize = 5 * Mb;
         }
 
         public void OnGet()
@@ -35,23 +38,22 @@ namespace olm_insights_web.Pages
             }
         }
 
-        public async Task<IActionResult> OnPostCalculateAsync(string blobName, long blobSize)
+        public async Task OnPostCalculateAsync(string blobName, long blobSize)
         {
             var sourceContainer = _blobServiceClient.GetBlobContainerClient("source");
             var blockBlob = sourceContainer.GetBlockBlobClient(blobName);
             ResultMd5 = await CalculateBlobMd5Async(blobSize, blockBlob);
-
-            return null;
         }
 
         private async Task<Guid> CalculateBlobMd5Async(long fileSize, BlockBlobClient blockBlobClient)
         {
             _logger.LogWarning($"Md5 calculation started...");
+            
             using var totalMd5 = MD5.Create();
 
             await foreach (var dataChunk in EnumerateChunksAsync(blockBlobClient, fileSize))
             {
-                _logger.LogInformation($"Batch {dataChunk.index} downloaded.");
+                _logger.LogError($"Batch {dataChunk.index} downloaded.");
                 totalMd5.TransformBlock(dataChunk.data, 0, dataChunk.data.Length, null, 0);
             }
 

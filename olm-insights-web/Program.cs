@@ -1,4 +1,5 @@
 using Azure.Storage.Blobs;
+using Azure.Storage.Queues;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<BlobServiceClient>(
     c => new BlobServiceClient("DefaultEndpointsProtocol=https;AccountName=olminsightsstorage;AccountKey=AlmelybsNIBk7KhQdfraCqAqydKa229hqkVcD9JdrLUBhLf+8+swZrt7GGTgUxMtjl+oigkpy/X4jH/UG/rXLQ==;EndpointSuffix=core.windows.net"));
+builder.Services.AddSingleton<QueueClient>(
+    c => new QueueClient(
+        "DefaultEndpointsProtocol=https;AccountName=olminsightsstorage;AccountKey=AlmelybsNIBk7KhQdfraCqAqydKa229hqkVcD9JdrLUBhLf+8+swZrt7GGTgUxMtjl+oigkpy/X4jH/UG/rXLQ==;EndpointSuffix=core.windows.net",
+        queueName: "simple-queue"));
 
 builder.Services.AddLogging();
 builder.Services.AddApplicationInsightsTelemetry();
