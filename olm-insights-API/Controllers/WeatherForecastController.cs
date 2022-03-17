@@ -31,8 +31,6 @@ namespace olm_insights_API.Controllers
                 _logger.LogInformation("adding blog with title: " + blog.Title);
 
                 this.dbContext.Blogs.Add(blog);
-
-                var httpClient 
             }
             else
             {
